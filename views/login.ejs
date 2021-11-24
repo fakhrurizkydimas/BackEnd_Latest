@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<link rel="stylesheet" href="/css/styleFetcAPIMovie.css" />
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+<body>
+    <div class="container-fluid">
+        <div class="wrapper-form mt-5 mb-5">
+          <h4>LOGIN</h4>      
+          <br/>
+   
+          <div class="mb-3 d-flex">
+            <label for="Username" class="form-label col-md-2">Username</label>
+            <input type="text" class="form-control" name="Username" id="Username" placeholder="Your Username"/>
+          </div>
+          <div class="mb-3 d-flex">
+            <label for="password" class="form-label col-md-2">password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Your password"/>
+          </div>      
+          <div class="mb-3 d-flex">
+            <label for="kosongan" class="form-label col-md-2"></label>
+            <button type="button" id="btnLogin" class="btn btn-primary w-25">
+              <i class="fa fa-sign-in-alt"></i>
+              LOGIN
+            </button>
+            <button type="reset" id="btnReset" class="btn btn-danger w-25">
+              <i class="fa fa-undo"></i>
+              BACK
+            </button>        
+          </div>
+        </div>
+      </div>
+   <script type="text/javascript"> 
+        let username = document.querySelector('#Username'); 
+        let password = document.querySelector('#password'); 
+        let ButtonReset = document.querySelector('#btnReset'); 
+        let ButtonLogin = document.querySelector('#btnLogin'); 
+ 
+        // let data_cookie = JSON.parse(getCookie('user-data')) 
+        // console.log(data_cookie) 
+ 
+        ButtonReset.addEventListener('click', function(e) { 
+            location.href = '/index'; 
+        }) 
+ 
+        ButtonLogin.addEventListener('click', function(e) { 
+            //console.log(username.value); 
+            //console.log(password.value); 
+                fetch('/login', { 
+                    method: 'POST', 
+                    headers: { 
+                        'Content-Type': 'application/json', 
+                        // 'Authorization' : Bearer ${ data_cookie.result.token } 
+                    }, 
+                    body: JSON.stringify({ 
+                        Username: username.value, 
+                        password: password.value, 
+                    }) 
+                }) 
+                .then(response => {  
+                  return response.json(); 
+                }) 
+                .then(result => { 
+                  if(result.message == 'Successfull to login..'){
+                    console.log(result) 
+                    setCookie('user-data', JSON.stringify(result.result), 7); 
+                    alert('Berhasil Login'); 
+                    window.location.href = '/udashboard' 
+                  } else {
+                    alert('Faled to login')
+                    window.location.href = '/index'
+                  } 
+
+                }) 
+                .catch(err => {  
+                  console.log(err) 
+                }) 
+        }) 
+        ////Buat Logged Akun  
+        function setCookie(name,value,days) { 
+            var expires = ""; 
+            if (days) { 
+                var date = new Date(); 
+                date.setTime(date.getTime() + (days*24*60*60*1000)); 
+                expires = "; expires=" + date.toUTCString(); 
+            } 
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/"; 
+        } 
+         
+</script>
+
+</body>
+</html>            

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <title>SignIn Page</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/signIn.css"/>
+
+
+</head>
+
+<body>
+
+<div class="background">
+
+
+<div class="loginFormWrapper">
+    <form action="/upost" method="POST">
+        <div class="loginForm">
+            <div class="wrapper">
+                <label for="Username">Username:</label>
+                <input type="text" class="form-control" id="Username" name="Username" placeholder="Username">
+            </div>
+            <div class="wrapper">
+                <label for="password">password:</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="password">
+            </div>
+            <div class="wrapper">
+                <label for="email">email:</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="email">
+            </div>
+            <div class="wrapper">
+                <label for="address">address:</label>
+                <input type="text" class="form-control" name="address" id="address" placeholder="address">
+            </div>
+            <div class="wrapper">
+                <label for="age">age:</label>
+                <input type="text" class="form-control" name="age" id="age" placeholder="age">
+            </div>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+
+    </form>
+    <form action="users" method="GET">
+        <button type="submit" class="btn btn-default">get result</button>
+    </form>
+</div>
+
+</div>
+
+
+</body>
+</html>

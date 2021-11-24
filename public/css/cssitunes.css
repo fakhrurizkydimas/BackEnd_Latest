@@ -1,0 +1,107 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: #2d2c2d;
+    color: white;
+}
+
+.search-bar {
+    padding-left: 40px;
+    padding-right: 50px;
+}
+
+input[type=text] {
+    width:100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-color: white;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.title-music {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 25px;
+}
+
+.content-music {
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 550px;
+}
+
+.box-wrapper-list {
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    font-size: 14px;
+    line-height: 5px;
+    border-radius: 5px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.content-music .list-music-detail {
+    padding-top: 10px;
+}
+
+.content-music .list-music-detail .image-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.content-music .list-music-detail .image-icon img {  
+    width: 60px;
+    height: 60px;  
+    border-radius: 10px;
+}
+
+.content-music .list-music-detail .title-detail{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 0;
+    line-height: 0;
+    /* padding-top: 10px; */
+} 
+
+.content-music .list-music-detail .title-detail h5 {
+    font-size: 12px;
+    font-weight: 500;
+} 
+
+.content-music .list-music-detail .title-detail .artist-name {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.content-music .list-music-detail .title-detail .collection-name {
+    font-size: 5px;
+    font-weight: 100;
+    line-height: 2px;
+}
+
+.content-music .list-music-detail .play-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.player {
+    position: fixed;
+    background-color: darkgrey;
+    width: 25%;
+    height: 100px;
+    margin-top: 550px;
+    margin-left: 35%;
+}
+
+.close-player {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-top: 5px;
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<link rel="stylesheet" href="/css/styleFetcAPIMovie.css" />
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+<body>
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg col-12">
+          <a class="logo">
+            <a style="font-weight: bold;">LOGO</a>
+          </a>      
+          <!-- button toggler untuk dropdown menu ketika tampilan mengecil / responsive dropdown menu -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="/index" id="login-user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgb(96, 22, 114);">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/home">
+                    <i class="fa fa-igloo"></i>
+                    Home
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    <!-- <div class="header">
+        <div class="header-center">
+            <a href="#User">USER</a>
+            <a href="#Product">PRODUCT</a>
+        </div>
+    </div> -->
+    <div class="col-6">
+    </div>
+
+    <div class="container" id="app">
+        <div class="row">
+            <div class="col-3">
+                <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for Name.." id="myInput" onkeyup="myFunction()">
+            </div>
+            <div class=" col-3 card">
+                <a href="/creates">create data</a>
+            </div>
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>password</th>
+                    <th>email</th>
+                    <th>address</th>
+                    <th>age</th>
+                    <th>upd/del</th>
+
+                </tr>
+            </thead>
+            <tbody id="coba">
+               
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>password</th>
+                    <th>email</th>
+                    <th>address</th>
+                    <th>age</th>
+                    <th>upd/del</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+        fetch('/uget')
+            .then(function (response) {
+                return response.json();
+            }).then(function (result) {
+                console.log(result)
+                    const box = document.querySelector('#coba')
+                    for (var i=0; i<result.result.length; i++){
+                       // console.log(result.result[i])
+                    box.innerHTML += `<tr>
+                    <td>${result.result[i]._id}</td>
+                    <td>${result.result[i].Username}</td>
+                    <td>${result.result[i].password}</td>
+                    <td>${result.result[i].email}</td>
+                    <td>${result.result[i].address}</td>
+                    <td>${result.result[i].age}</td>
+                    <td><input id = "id_input" name="id_user" value="${result.result[i]._id}" hidden/>
+                        <button onclick="openForm()" id="edit" data_id="${result.result[i]._id}"><i class='fas fa-edit'></i></button>
+                        <button onclick ="deleteForm()"id="butdel" data_id="${result.result[i]._id}"><i class='fas fa-trash'></i></button></input>
+
+                        
+                        <div class="form-popup" id="myForm">
+                            <form action="/uupdate" method="post" class="form-container" >
+                            <h1>Login</h1>
+                            ${result.result[i]._id}
+                        
+                            <label for="Username"><b>Username</b></label>
+                            <input type="text" placeholder="${result.result[i].Username}" name="Username" required>
+                        
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="${result.result[i].password}" name="psw" required>
+                            
+                            <label for="email"><b>Email</b></label>
+                            <input type="text" placeholder="${result.result[i].email}" name="email" required>
+                            
+                            <label for="address"><b>Address</b></label>
+                            <input type="text" placeholder="${result.result[i].address}" name="address" required>
+
+                            <label for="age"><b>Age</b></label>
+                            <input type="text" placeholder="${result.result[i].age}" name="age" required>
+                        
+                            <button type="submit" class="btn">Update</button>
+                            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                            </form>
+                    </td>
+                    </tr>`
+                    }
+            })        
+function openForm() {
+document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+document.getElementById("myForm").style.display = "none";
+}
+
+
+function deleteForm() {
+    document.querySelector('#butdel').style.display = 'none';
+    fetch('/hapus', {method: 'post', headers: {'Content-Type': 'application/json'}})
+    .then(function (response) {
+      return response.json();
+    })
+}
+
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("example");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+function setCookie(name,value,days){
+        var expires = ""
+        if(days){
+            var date = new date();
+            date.setTime(date.gettime()+(days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCStrong();
+        }
+        document.cookie = name + "=" + (value || "")+ expires + "; path=/"
+    }
+
+    function getCookie(name){
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i= 0;i <ca.length;i++){
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ)===0) return c.substring(nameEQ.length)
+        }
+        return null;
+    }
+    
+    let data_cookie = JSON.parse(getCookie('user-data'))
+    let logindata = document.querySelector('#login-user')
+    console.log(data_cookie)
+    logindata.innerHTML = data_cookie.Username
+
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+</body>
+</html>            
