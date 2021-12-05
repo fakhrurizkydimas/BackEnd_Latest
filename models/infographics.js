@@ -6,8 +6,9 @@ var Schema = new Mongoose.Schema({
     username: { type: String},
     divisi: { type: String},
     date:{type: Date, dafault: Date.now},
+    link: { type: String},
 })
 
-const audit = Mongoose.model('audit',Schema)
+const infographics = Mongoose.model('infographics',Schema)
 
-module.exports = audit
+module.exports = infographics

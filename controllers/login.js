@@ -40,6 +40,7 @@ exports.loginuser = async(request, response) => {
           email: userData.email,
           divisi: userData.divisi,
           roles: userData.roles,
+          images: userData.images,
           token: token,
           token_type: 'Bearer'
         }

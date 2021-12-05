@@ -2,7 +2,7 @@ const { req, res } = require('express')
 const express = require ('express')
 const routes = express.Router()
 const newscontroller = require('../controllers/newscontroller')
-const audit = require('../controllers/audit')
+const infographics = require('../controllers/infographics')
 const iklan = require('../controllers/iklan')
 
 const multer = require('multer')
@@ -27,8 +27,10 @@ routes.post('/createnews',newscontroller.create)
 routes.post('/updatenews',newscontroller.update)
 routes.post('/deletenews',newscontroller.delete)
 routes.get('/viewnews',newscontroller.view)
+routes.post('/viewDetail',newscontroller.viewDetail)
 
-routes.post('/audit',audit.audit)
+
+routes.post('/infographics',infographics.create)
 
 routes.post('/createiklan',iklan.create)
 routes.post('/updateiklan',iklan.update)
