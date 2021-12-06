@@ -5,7 +5,7 @@ const { ObjectId } = require('bson')
 var Schema = new Mongoose.Schema({
     username: { type: String},
     divisi: { type: String},
-    date:{type: Date, dafault: Date.now},
+    date: { type: Date, dafault: Date.now },
     link: { type: String},
 })
 

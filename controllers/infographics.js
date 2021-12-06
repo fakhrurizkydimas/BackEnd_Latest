@@ -92,3 +92,24 @@ exports.Detect = async (req, res) => {
         }
     }
 }
+
+exports.Params = async (req, res) => {
+    let verify = await jwtcheck.check(req.headers.authorization)
+    if ( !verify ) {
+        res.send({
+            message: `false`,
+            statusCode: 403
+        })
+    } else {
+        console.log(ISOdate(Date(req.body.from)))
+        await infographics.find({
+            'username': req.body.username,
+            'date': { $gte: Date(req.body.from), $lt: Date(req.body.end) },
+            'created_at': { $gte: Date(req.body.from), $lt: Date(req.body.end) },
+        }).then(response => {
+            console.log(response)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+}
