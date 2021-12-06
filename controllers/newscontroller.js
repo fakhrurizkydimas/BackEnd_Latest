@@ -232,8 +232,18 @@ exports.create = (request,response)=>{
     }
 
 
-exports.Search = (req, res) => {
-    res.send('ok search')
+exports.Search = async (req, res) => {
+    console.log(req.query)
+    // res.send('ok search')
+    await newscontent.find().limit(Number(req.query.maxData)).skip(Number(req.query.page)).then(response => {
+        res.send({
+            message: `successfull to get data`,
+            statusCode: 200,
+            result: response
+        })
+    }).catch(err => {
+        res.status(500).send({ message: `failed to get data` })
+    })
 }
 
 exports.SearchGet = async (req, res) => {
