@@ -29,14 +29,16 @@ routes.post('/deletenews',newscontroller.delete)
 routes.get('/viewnews',newscontroller.view)
 routes.post('/viewDetail',newscontroller.viewDetail)
 
-
-routes.post('/infographics',infographics.create)
-
 routes.post('/createiklan',iklan.create)
 routes.post('/updateiklan',iklan.update)
 routes.post('/deleteiklan',iklan.delete)
 routes.get('/viewiklan',iklan.view)
 
-
+// InfoGraphics
+routes.post('/infographics', infographics.create)
+routes.post('/infographics/save', infographics.Detect)
+routes.get('/infographics/detect', infographics.Get)
+routes.post('/infographics/detect', infographics.Detect)
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpbWFzIiwiZW1haWwiOiJkaW1hc0BidWtvcGluLmNvbSIsInJvbGVzIjoiYWRtaW4iLCJpYXQiOjE2Mzg3NjYxNDF9.xdZbkDjQ2236rOWIp475J9nij0JiHDFkU_7vDbKFMyU
 
 module.exports = routes

@@ -17,7 +17,7 @@ exports.check = (params = null, response = null) => {
             if (err) return false
             if (ResultVerify) return ResultVerify
         })
-        console.log(VerifyToken)
+        // console.log(VerifyToken)
         return VerifyToken
     }
 }

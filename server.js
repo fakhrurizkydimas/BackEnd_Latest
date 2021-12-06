@@ -15,13 +15,19 @@ app.set('view engine','ejs')
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }) )
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: '*'
+}))
 //app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 app.listen(port,() => {console.log(`server berjalan di port : ${port }`) })
 
 //Routing
 const Router = require('./routes/routes')
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
 app.use(Router)
 
 //models
