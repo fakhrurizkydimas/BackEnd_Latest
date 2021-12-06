@@ -229,3 +229,22 @@ exports.create = (request,response)=>{
             }
         }
     }
+
+
+exports.Search = (req, res) => {
+    res.send('ok search')
+}
+
+exports.SearchGet = async (req, res) => {
+    await newscontent.find({ 'title': { $regex: req.query.query } }).then(response => {
+        console.log(response )
+        res.status(200).send({
+            message: 'success to get data',
+            statusCode: 200,
+            result: response
+        })
+    }).catch(err => {
+        console.log(err)
+        res.status(500).send({ message: 'failed to get data', err: err.message })
+    })
+}

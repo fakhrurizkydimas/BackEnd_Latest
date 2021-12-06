@@ -28,6 +28,8 @@ routes.post('/updatenews',newscontroller.update)
 routes.post('/deletenews',newscontroller.delete)
 routes.get('/viewnews',newscontroller.view)
 routes.post('/viewDetail',newscontroller.viewDetail)
+routes.post('/viewnews/search',newscontroller.Search)
+routes.get('/viewnews/search',newscontroller.SearchGet)
 
 routes.post('/createiklan',iklan.create)
 routes.post('/updateiklan',iklan.update)
