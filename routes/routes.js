@@ -33,6 +33,8 @@ routes.get('/viewnews/search',newscontroller.SearchGet)
 routes.post('/news/edit', newscontroller.Edit)
 routes.get('/news/detail', newscontroller.Detail)
 
+// routes.get('/extnest/detail', extnewscontroller.Get)
+
 routes.post('/createiklan',iklan.create)
 routes.post('/updateiklan',iklan.update)
 routes.post('/deleteiklan',iklan.delete)
@@ -42,8 +44,9 @@ routes.get('/viewiklan',iklan.view)
 routes.post('/infographics', infographics.create)
 routes.post('/infographics/save', infographics.Detect)
 routes.get('/infographics/detect', infographics.Get)
+routes.get('/infographics/detect/get', infographics.ParamsGet)
 routes.post('/infographics/detect', infographics.Detect)
-routes.post('/infographics/detect/params', infographics.Params)
+routes.post('/infographics/detect/params', infographics.ParamsTwo)
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpbWFzIiwiZW1haWwiOiJkaW1hc0BidWtvcGluLmNvbSIsInJvbGVzIjoiYWRtaW4iLCJpYXQiOjE2Mzg3NjYxNDF9.xdZbkDjQ2236rOWIp475J9nij0JiHDFkU_7vDbKFMyU
 
 module.exports = routes
