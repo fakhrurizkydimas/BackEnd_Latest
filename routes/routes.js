@@ -31,6 +31,7 @@ routes.post('/viewDetail',newscontroller.viewDetail)
 routes.get('/viewnews/search/params',newscontroller.Search)
 routes.get('/viewnews/search',newscontroller.SearchGet)
 routes.post('/news/edit', newscontroller.Edit)
+routes.get('/news/detail', newscontroller.Detail)
 
 routes.post('/createiklan',iklan.create)
 routes.post('/updateiklan',iklan.update)

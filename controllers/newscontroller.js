@@ -313,6 +313,21 @@ exports.Edit = async (req, res) => {
     }
 }
 
+exports.Detail = async (req, res) => {
+    await newscontent.findOne({ '_id': req.query.id }).then(response => {
+        res.send({
+            message: 'successfull to get data detail',
+            statusCode: 200,
+            result: response
+        })
+    }).catch(err => {
+        res.status(500).send({
+            message: 'failed to get data detail',
+            statusCode: 500,
+        })
+    })
+}
+
 // let test = {
 //     _id: new ObjectId("61a5aadafd4e4d6316ee5b0d"),
 //     title: 'Sosialiasi Rebranding KB Bukopin',
